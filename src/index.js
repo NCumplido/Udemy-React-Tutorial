@@ -10,14 +10,17 @@ function BookList(){
 }
 
 const Book = () => {
+  const title = 'The Walking Dead';
+  const author = 'Robert Kirkman';
   return (
    <article className="book">
-      <h1>The Walking Dead</h1>
-      <h4>Robert Kirkman</h4>
+      <h1>{title}</h1>
+      <h4>{author}</h4>
       <img src="https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg" alt="Grocery Basket" />
+      <p></p>
     </article>
-  )
-}
+  );
+};
 
 ReactDOM.render(<BookList />, document.getElementById('root'));
 
