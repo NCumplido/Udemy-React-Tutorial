@@ -3,48 +3,41 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 //js setup
-const firstComic = {
+const comics =[
+{
+  img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
   title: 'The Walking Dead',
-  author: 'Robert Kirkman',
+  author: 'Robert Kirkman'
+},
+{
   img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
-  alt: '"Walking Dead Comic Book Cover"'
-}
-const secondComic = {
   title: 'The Walking Dead Volume Two',
-  author: 'Kirkman, Robert',
-  img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
-  alt: '"Walking Dead Second Comic Book"'
+  author: 'Kirkman, Robert'
 }
+];
+
+
 
 function BookList(){
-  return <section className="bookList"> 
-    <Book 
-    img={firstComic.img} 
-    title={firstComic.title} 
-    author={firstComic.author}
-    >
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo officiis vitae excepturi fuga ut doloribus totam earum velit quos consectetur.
-    </p>
-    </Book>
-    <Book 
-    img={secondComic.img} 
-    title={secondComic.title} 
-    author={secondComic.author}/>
-    <Book>
-    </Book>
-  </section>;  
+  return (
+  <section className="bookList">
+    {comics.map((comic)=>{
+    return (
+      <Book comic={comic}></Book>
+    );
+  })}
+  </section> 
+  );
 }
 
 const Book = (props) => {
-  const {title, author, img, children } = props;
-  console.log(props);
+  const {title, author, img} = props.comic;
+  
   return (
    <article className="book">
       <img src={img} alt=''/>
       <h1>{title}</h1>
       <h4>{author}</h4>
-      {children}
     </article>
   );
 };
