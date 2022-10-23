@@ -18,19 +18,33 @@ const secondComic = {
 
 function BookList(){
   return <section className="bookList"> 
-    <Book img={firstComic.img} title={firstComic.title} author={firstComic.author} alt={firstComic.alt}/>
-    <Book img={secondComic.img} title={secondComic.title} author={secondComic.author} alt={firstComic.alt}/>
-    <Book/>
+    <Book 
+    img={firstComic.img} 
+    title={firstComic.title} 
+    author={firstComic.author}
+    >
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo officiis vitae excepturi fuga ut doloribus totam earum velit quos consectetur.
+    </p>
+    </Book>
+    <Book 
+    img={secondComic.img} 
+    title={secondComic.title} 
+    author={secondComic.author}/>
+    <Book>
+    </Book>
   </section>;  
 }
 
-const Book = ({title, author, img, alt}) => {
-  //const {title, author, img, alt} = props;
+const Book = (props) => {
+  const {title, author, img, children } = props;
+  console.log(props);
   return (
    <article className="book">
+      <img src={img} alt=''/>
       <h1>{title}</h1>
       <h4>{author}</h4>
-      <img src={img} alt={alt} />
+      {children}
     </article>
   );
 };
@@ -64,3 +78,16 @@ ReactDOM.render(<BookList />, document.getElementById('root'));
 // const Message = () => {
 //   return <p>Yo yo yo</p>;
 // }
+
+//////////////////////////////// Destructuring:
+// const Book = ({title, author, img, children}) => {
+//   //const {title, author, img } = props;
+//   return (
+//    <article className="book">
+//       <img src={img} alt=''/>
+//       <h1>{title}</h1>
+//       <h4>{author}</h4>
+//       {children}
+//     </article>
+//   );
+// };
