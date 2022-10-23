@@ -2,22 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function BookList(){
-  return <section className="bookList"> 
-    <Book />
-  </section>;
-  
+//js setup
+const firstComic = {
+  title: 'The Walking Dead',
+  author: 'Robert Kirkman',
+  img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
+  alt: '"Walking Dead Comic Book Cover"'
+}
+const secondComic = {
+  title: 'The Walking Dead Volume Two',
+  author: 'Kirkman, Robert',
+  img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
+  alt: '"Walking Dead Second Comic Book"'
 }
 
-const Book = () => {
-  const title = 'The Walking Dead';
-  const author = 'Robert Kirkman';
+function BookList(){
+  return <section className="bookList"> 
+    <Book img={firstComic.img} title={firstComic.title} author={firstComic.author} alt={firstComic.alt}/>
+    <Book img={secondComic.img} title={secondComic.title} author={secondComic.author} alt={firstComic.alt}/>
+    <Book/>
+  </section>;  
+}
+
+const Book = ({title, author, img, alt}) => {
+  //const {title, author, img, alt} = props;
   return (
    <article className="book">
       <h1>{title}</h1>
       <h4>{author}</h4>
-      <img src="https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg" alt="Grocery Basket" />
-      <p></p>
+      <img src={img} alt={alt} />
     </article>
   );
 };
