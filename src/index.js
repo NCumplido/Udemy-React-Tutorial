@@ -5,11 +5,13 @@ import './index.css';
 //js setup
 const comics =[
 {
+  id: 1,
   img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
   title: 'The Walking Dead',
   author: 'Robert Kirkman'
 },
 {
+  id: 2,
   img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
   title: 'The Walking Dead Volume Two',
   author: 'Kirkman, Robert'
@@ -19,25 +21,42 @@ const comics =[
 
 
 function BookList(){
-  return (
+  return ( 
   <section className="bookList">
     {comics.map((comic)=>{
     return (
-      <Book comic={comic}></Book>
-    );
+      <Book key={comic.id} {...comic}></Book>
+    ); 
   })}
   </section> 
   );
 }
 
-const Book = (props) => {
-  const {title, author, img} = props.comic;
-  
+const Book = ({img, title, author}) => {
+  // attribute, eventhandler
+  // onClick onMouseOver
+  const clickHandler = (e) =>{
+    console.log("Event: ", e); //This is how we can log event info
+    console.log("Event target: ", e.target);
+    
+    console.log("Button click");
+  }
+  const complexExample = (author) => {
+    console.log(author);
+  }
   return (
-   <article className="book">
+   <article className="book" onMouseOver={()=>{
+    console.log(title);
+   }}>
       <img src={img} alt=''/>
-      <h1>{title}</h1>
+      <h1 onClick={()=> console.log(title)}>{title}</h1>
       <h4>{author}</h4>
+      <button type="button" onClick={clickHandler}>
+        Button for clicking
+      </button>
+      <button type="button" onClick={() => complexExample(author)}>
+        Complex Example
+      </button>
     </article>
   );
 };
