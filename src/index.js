@@ -1,67 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// CSS
 import './index.css';
 
-//js setup
-const comics =[
-{
-  id: 1,
-  img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
-  title: 'The Walking Dead',
-  author: 'Robert Kirkman'
-},
-{
-  id: 2,
-  img: 'https://upload.wikimedia.org/wikipedia/en/c/cf/WalkingDead1.jpg',
-  title: 'The Walking Dead Volume Two',
-  author: 'Kirkman, Robert'
-}
-];
+import {comics} from './comics'
+import Comic from './Comic' //I can rename "Comic" to whatever but that is what is being referenced in this file
 
-
-
-function BookList(){
+function ComicList(){
   return ( 
-  <section className="bookList">
+  <section className="comicList">
     {comics.map((comic)=>{
     return (
-      <Book key={comic.id} {...comic}></Book>
+      <Comic key={comic.id} {...comic}></Comic>
     ); 
   })}
   </section> 
   );
 }
 
-const Book = ({img, title, author}) => {
-  // attribute, eventhandler
-  // onClick onMouseOver
-  const clickHandler = (e) =>{
-    console.log("Event: ", e); //This is how we can log event info
-    console.log("Event target: ", e.target);
-    
-    console.log("Button click");
-  }
-  const complexExample = (author) => {
-    console.log(author);
-  }
-  return (
-   <article className="book" onMouseOver={()=>{
-    console.log(title);
-   }}>
-      <img src={img} alt=''/>
-      <h1 onClick={()=> console.log(title)}>{title}</h1>
-      <h4>{author}</h4>
-      <button type="button" onClick={clickHandler}>
-        Button for clicking
-      </button>
-      <button type="button" onClick={() => complexExample(author)}>
-        Complex Example
-      </button>
-    </article>
-  );
-};
-
-ReactDOM.render(<BookList />, document.getElementById('root'));
+ReactDOM.render(<ComicList />, document.getElementById('root'));
 
 //ReactDOM.render(<h2>Hello</h2>, document.getElementById('root'));
 //ReactDOM.render(<index/>, document.getElementById('root'));
